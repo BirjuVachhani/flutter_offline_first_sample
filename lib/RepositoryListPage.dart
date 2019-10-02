@@ -92,9 +92,6 @@ class _RepositoryListPageState extends State<RepositoryListPage> {
       setState(() {
         _list.clear();
         _list.addAll(response.items);
-        _list.addAll(response.items);
-        _list.addAll(response.items);
-        _list.addAll(response.items);
         if (response.items.isNotEmpty) {
           _currentState = "success";
         } else {

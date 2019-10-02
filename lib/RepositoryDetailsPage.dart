@@ -6,6 +6,8 @@ import 'package:intl/intl.dart';
 import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'Avatar.dart';
+
 class RepositoryDetailsPage extends StatelessWidget {
   final Repository _repo;
 
@@ -49,29 +51,7 @@ class _RepositoryDetailsState extends State<RepositoryDetails> {
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16.0),
-                    child: SizedBox.fromSize(
-                      size: Size(80, 80),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(56.0),
-                        child:
-                            /*CachedNetworkImage(
-                          imageUrl: _repo.owner.avatarUrl,
-                          placeholder: (context, url) =>
-                              Image.asset("assets/images/avatar_placeholder.png"),
-                          errorWidget: (context, url, error) =>
-                              new Icon(Icons.error),
-                        ),*/
-                            Image.network(
-                          _repo.owner.avatarUrl,
-                          loadingBuilder: (context, child, loadingProgress) =>
-                              loadingProgress == null
-                                  ? child
-                                  : Center(
-                                      child: CircularProgressIndicator(),
-                                    ),
-                        ),
-                      ),
-                    ),
+                    child: NetworkAvatar(_repo.owner.avatarUrl, size: 80),
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16.0),

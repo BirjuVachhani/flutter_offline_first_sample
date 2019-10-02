@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_io_sample/RepositoryDetailsPage.dart';
 import 'package:flutter_io_sample/utils/HexColor.dart';
 
+import 'Avatar.dart';
 import 'RepositoryResponse.dart';
 
 class RepositoryListItem extends StatefulWidget {
@@ -35,28 +36,7 @@ class _RepositoryListItemState extends State<RepositoryListItem> {
           children: <Widget>[
             Padding(
               padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 5.0),
-              child: SizedBox.fromSize(
-                size: Size(40, 40),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(56.0),
-                  child:
-                      /*CachedNetworkImage(
-                    imageUrl: _repo.owner.avatarUrl,
-                    placeholder: (context, url) =>
-                        Image.asset("assets/images/avatar_placeholder.png"),
-                    errorWidget: (context, url, error) => new Icon(Icons.error),
-                  ),*/
-                      Image.network(
-                    _repo.owner.avatarUrl,
-                    loadingBuilder: (context, child, loadingProgress) =>
-                        loadingProgress == null
-                            ? child
-                            : Center(
-                                child: Icon(Icons.person),
-                              ),
-                  ),
-                ),
-              ),
+              child: NetworkAvatar(_repo.owner.avatarUrl, size: 40),
             ),
             Expanded(
               child: Container(
